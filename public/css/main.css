@@ -1,0 +1,208 @@
+/*---------------------------------
+                FONTS
+---------------------------------*/
+@font-face {
+    font-family: Sahel;
+    src: url('fonts/Sahel.eot');
+    src: url('fonts/Sahel.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Sahel.woff') format('woff'),
+         url('fonts/Sahel.ttf') format('truetype');
+    font-weight: normal;
+  }
+        
+  @font-face {
+    font-family: Sahel;
+    src: url('fonts/Sahel-Bold.eot');
+    src: url('fonts/Sahel-Bold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Sahel-Bold.woff') format('woff'),
+         url('fonts/Sahel-Bold.ttf') format('truetype');
+    font-weight: bold;
+  }
+  
+  @font-face {
+    font-family: Sahel;
+    src: url('fonts/Sahel-Black.eot');
+    src: url('fonts/Sahel-Black.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Sahel-Black.woff') format('woff'),
+         url('fonts/Sahel-Black.ttf') format('truetype');
+    font-weight: 900;
+  }
+/*---------------------------------
+            TYPOGRAPHY
+---------------------------------*/
+*:not([class*='icon']):not(.fa):not(i) {
+    font-family: Sahel;
+    letter-spacing: normal !important;
+}
+
+body, div, span, h1, h2, h3, h4, h5, h6, p, a,section, mark,
+ol, ul, li, form, table, caption, tbody, tfoot, thead, tr, th, td, article,
+aside, details, figcaption, footer, header, hgroup, menu, nav, output,
+input[type="text"] , input[type="textarea"] , input[type="submit"] {
+    font-family: Sahel;
+    letter-spacing: normal !important;
+}
+a , span {
+    font-family: Sahel;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Sahel;
+    direction: rtl !important;
+    letter-spacing: normal !important;
+}
+
+p {
+    font-family: Sahel;
+    letter-spacing: normal !important;
+    direction: rtl !important;
+    line-height: 20px !important;
+}
+.fa , [class*='fa-'] {font-family: "FontAwesome" !important;}
+.ab-icon {font: 400 20px/1 "dashicons" !important;}
+.dashicons {font-family: "dashicons" !important;}
+.font-number{
+    display: inline-block;
+    direction: ltr;
+}
+/*---------------------------------
+            HEADER
+---------------------------------*/
+#header{
+    text-align: center;
+}
+#header #main{
+    border-bottom: 3px solid #00dbef;
+    height: 37px;
+}
+#header #main-menu {
+    margin-right: 5%;
+}
+#header #main #main-menu > li {
+    display: inline-block;
+    float: right;
+    margin-left: 15px;
+    padding-bottom: 10px;
+    position: relative;
+}
+#header #logo{
+    width: 140px;
+    padding: 20px 0 10px 0px;
+}
+#header #main .responsive-menu {
+    display: none;
+}
+#header #main #main-menu > li > a{
+    -moz-border-radius: 5px 5px 0px 0px;
+    -moz-transition: all .3s;
+    -o-border-radius: 5px 5px 0px 0px;
+    -o-transition: all .3s;
+    -webkit-border-radius: 5px 5px 0px 0px;
+    -webkit-transition: all .3s;
+    border-radius: 5px 5px 0px 0px;
+    display: block;
+    padding: 8px 10px;
+    transition: all .3s;
+    vertical-align: middle;
+}
+#header #main #main-menu li a{
+    -moz-transition: all .1s;
+    -o-transition: all .1s;
+    -webkit-transition: all .1s;
+    transition: all .1s;
+    font-size: 13px;
+}
+#header #main #main-menu > li > a:hover,
+#header #main #main-menu > li.active > a,
+#header #main #main-menu > li.sfHover > a{
+    background: #00dbef;
+    color: white;
+}
+#header #main #main-menu > li > ul{
+    background: white;
+    border-top: 3px solid #00dbef;
+    box-shadow: 0px 0px 3px #adadad;
+    position: absolute;
+    text-align: right;
+    top: 46px;
+    width: 220px;
+    z-index: 99;
+}
+#header #main #main-menu li ul:before{
+    border-bottom: 9px solid #00dbef;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    content: "";
+    height: 0;
+    position: absolute;
+    right: 20px;
+    top: -12px;
+    width: 0;
+}
+#header #main #main-menu li ul li{
+    line-height: 35px;
+    position: relative;
+}
+#header #main #main-menu ul li a:hover,
+#header #main #main-menu ul li.sfHover > a{
+    border-right: 3px solid #00dbef;
+}
+#header #main #main-menu li ul li ul{
+    -moz-box-shadow: 0px 0px 3px #adadad;
+    -o-box-shadow: 0px 0px 3px #adadad;
+    -webkit-box-shadow: 0px 0px 3px #adadad;
+    background: white;
+    border-top: 0px;
+    box-shadow: 0px 0px 3px #adadad;
+    position: absolute;
+    right: 222px;
+    text-align: right;
+    top: 0px;
+    width: 220px;
+    z-index: 99;
+}
+#header #main #main-menu li ul li ul:before{
+    content: none;
+}
+#header #main #main-menu li ul li a{
+    display: block;
+    padding-right: 5px;
+
+}
+#header #main #main-menu > li > a.sf-with-ul:before{
+    content: "\f103";
+    font-family: "FontAwesome";
+    height: 20px;
+    padding-left: 3px;
+    vertical-align: middle;
+    width: 20px;
+}
+#header #main #main-menu li ul > li > a.sf-with-ul:before{
+    content: "\f100";
+    font-family: "FontAwesome";
+    float: left;
+    vertical-align: middle;
+    padding-left: 8px;
+}
+.main-content {
+    padding: 30px 0;
+    min-height: 75vh;
+}
+.bloginfo {
+    padding-top: 30px;
+}
+.footer-bottom {
+    background: #39454f;
+    color: white;
+    padding: 15px 0px;
+}
+.footer-bottom p{
+    color: #727d86;
+    text-align: center;
+    margin-bottom: 2px;
+}
+.page-home .welcome {
+    font-size: 55px;
+    font-weight: lighter;
+    padding-top: 15%;
+}
