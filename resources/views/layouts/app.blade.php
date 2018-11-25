@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{env('LOG_CHANNEL')}}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{env('DIRECTION')}}">
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,20 +9,19 @@
       <link rel="stylesheet" href="{{ asset('css/main.css') }}">
       <title>{{__('general.title')}} - @yield('title')</title>
    </head>
-   <body class="page-{{$current_route}}">
+   <body class="page-{{str_replace('.','-',$currentRoute)}}">
       <header id="header">
          <h1 class="text-center bloginfo">{{__('general.bloginfo')}}</h1>
          <nav id="main">
             <ul id="main-menu">
-               <li class="{{($current_route == 'home')? 'active' : ''}} menu-item-home"><a href="#">{{__('menus.home')}}</a></li>
+               <li class="{{($currentRoute == 'home')? 'active' : ''}} menu-item-home"><a href="{{ route('home') }}">{{__('menus.home')}}</a></li>
+               <li class="{{($currentRoute == 'Book.index')? 'active' : ''}} menu-item-home"><a href="{{ route('Book.index') }}">{{__('menus.books')}}</a></li>
             </ul>
          </nav>
       </header>
       <main class="container">
-         <div class="row">
-            <div class="col-md-12 main-content">
-               @yield('content')
-            </div>
+         <div class="main-content">
+            @yield('content')
          </div>
       </main>
       <footer class="footer-bottom">

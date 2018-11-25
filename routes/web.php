@@ -13,6 +13,9 @@
 
 
 Route::get('/', function () {
-    $current_route = Route::currentRouteName();
-    return view('home',compact('current_route'));
+    $currentRoute = Route::currentRouteName();
+    return view('home',compact('currentRoute'));
 })->name('home');
+
+Route::get('books', 'BookController@index')->name('Book.index');
+Route::get('books/{id}', 'BookController@show')->name('Book.show');
