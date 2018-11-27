@@ -18,4 +18,6 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('books', 'BookController@index')->name('Book.index');
+Route::get('books/create','BookController@create')->name('Book.create');
 Route::get('books/{id}', 'BookController@show')->name('Book.show');
+Route::post('books','BookController@store')->name('Book.store');
