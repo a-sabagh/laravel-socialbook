@@ -168,7 +168,7 @@ p {
 }
 .main-content {
     padding: 30px 0;
-    min-height: 75vh;
+    min-height: 69vh;
 }
 .bloginfo {
     padding-top: 28px;
@@ -187,4 +187,26 @@ p {
     font-size: 55px;
     font-weight: lighter;
     padding-top: 15%;
+}
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 6%;
+    border-bottom: 1px solid #ccc;
+    align-items: end;
+}
+.top-bar * {
+    margin-bottom: 0;
+}
+.top-bar .fa {
+    display: inline-block;
+    vertical-align: sub;
+    padding-left: 5px;
+}
+.top-bar-auth li {
+    display: inline-block;
+    margin-right: 15px;
+}
+.top-bar-auth li a{
+    color: inherit;
 }

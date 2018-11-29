@@ -13,7 +13,19 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
+    'failed' => 'این نام کاربری یافت نشد.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'login' => 'ورود',
+    'register' => 'ثبت نام',
+    'my-account' => 'حساب کاربری',
+    'logout' => 'خروج',
+    'email' => 'آدرس ایمیل',
+    'password' => 'گذر واژه',
+    'remember' => 'مرا به خاطر بسپار',
+    'forget' => 'گذر واژه را فراموش کردم',
+    'password-retype' => 'تایید گذرواژه',
+    'name' => 'نام کامل',
+    'phone' => 'شماره تماس',
+    'register' => 'ثبت نام',
+    'national_id' => 'کد ملی'
 ];

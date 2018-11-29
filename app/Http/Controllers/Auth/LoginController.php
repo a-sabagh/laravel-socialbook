@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -17,6 +18,7 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
+    public $currentRoute;
 
     use AuthenticatesUsers;
 
@@ -25,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -35,5 +37,17 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->currentRoute=Route::currentRouteName();
+    }
+
+    public function showLoginForm()
+    {
+        $currentRoute=$this->currentRoute;
+        return view('auth.login',compact('currentRoute'));
+    }
+
+    public function username()
+    {
+        return 'phone';
     }
 }
