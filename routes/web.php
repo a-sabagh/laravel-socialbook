@@ -24,3 +24,6 @@ Route::post('books','BookController@store')->name('Book.store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('books/{id}/edit','BookController@edit')->name('Book.edit');
+Route::patch('books/{id}','BookController@update')->name('Book.update');

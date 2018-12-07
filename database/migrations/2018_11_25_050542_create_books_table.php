@@ -12,15 +12,20 @@ class CreateBooksTable extends Migration
      * @return void
      */
     public function up()
-    {
+    { 
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('pages');
             $table->string('isbn')->unique();
             $table->integer('price');
             $table->date('published_at');
             $table->timestamps();
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
