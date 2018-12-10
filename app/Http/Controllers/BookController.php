@@ -22,7 +22,7 @@ class BookController extends Controller
 
     public function index()
     {
-        $books = Book::all();
+        $books = Book::with('user')->get();
         $currentRoute = $this->currentRoute;
         return view('books.index', compact('books', 'currentRoute'));
     }

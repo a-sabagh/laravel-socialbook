@@ -27,3 +27,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('books/{id}/edit','BookController@edit')->name('Book.edit');
 Route::patch('books/{id}','BookController@update')->name('Book.update');
+
+Route::post('categories/create','CategoryController@AjaxStore');

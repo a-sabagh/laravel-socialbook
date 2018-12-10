@@ -16,11 +16,11 @@ class Book extends Model
 
     public function categories()
     {
-        return $this->belongsToMany('App\Category');
+        return $this->belongsToMany('App\Category')->withTimeStamps();
     }
 
     public function authors()
     {
-        return $this->belongsToMany('App\Author');
+        return $this->belongsToMany('App\Author')->withTimeStamps();
     }
 }

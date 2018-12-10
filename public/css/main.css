@@ -250,3 +250,44 @@ p {
 .btn-info,.btn-success , .btn-warning , .btn-primary{
     color: white !important;
 }
+.btn-default {
+    border: 1px solid #a4a4a4;
+}
+.rng-cat-browse{ height: 40px; position: relative; margin: 10px auto; }
+.rng-cat-browse .cat-holder{
+    float: right;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ccc;
+    border-right: 0;
+    height: 100%;
+    width: 85%;
+    text-align: left;
+    padding-left: 30px;
+    direction: ltr;
+}
+.rng-cat-browse .cat-label{
+    float: right;
+    border-radius: 0 5px 5px 0;
+    height: 100%;
+    width: 15%;
+}
+.rng-cat-browse .clear-file{
+    font-weight: normal;
+    font-size: 18px;
+    position: absolute;
+    left: 15px;
+    top: 7px;
+    cursor: pointer;
+}
+@media screen and (max-width: 992px) and (min-width: 768px){
+    .rng-cat-browse .cat-holder{ width: 75%; }
+    .rng-cat-browse .btn{ width: 25%; }
+}
+@media screen and (max-width: 767px) and (min-width: 480px){
+    .rng-cat-browse .cat-holder{ width: 70%; }
+    .rng-cat-browse .btn{ width: 30%; }
+}
+@media screen and (max-width: 480px){
+    .rng-cat-browse .cat-holder{ width: 65%; }
+    .rng-cat-browse .btn{ width: 35%; }
+}

@@ -25,6 +25,13 @@
                 @endforeach
             </select>
     </div>
+    <div class="rng-cat-browse form-group">
+        <label class="cat-label btn btn-default add-category" id="add-category">
+			{{__("books.addCategory")}}
+		</label>
+        <input type="text" id="category-name" class="cat-holder">
+        <span class="clear-file">&#10006;</span>
+    </div>
     <div class="form-group">
         <select name="authors[]" id="authors" class="form-control" multiple="multiple">
                 @foreach ($authors as $author)
@@ -34,4 +41,30 @@
     </div>
     <button type="submit" class="btn btn-primary">{{__('books.submit')}}</button>
 </form>
+@endsection
+
+@section('script')
+$(document).ready(function(){
+    $(".clear-file").click(function () {
+        var file_holder = $(this).prev(".cat-holder").val("");
+    });
+    $("#add-category").on('click',function(){
+        var categoryName = $(this).next("#category-name").val();
+        $.ajax({
+            url: "/categories/create",
+            type: "post",
+            data: {
+                "_token" : "{{ csrf_token() }}",
+                "name" : categoryName
+            },
+            success: function(Response)
+            {
+                $output = "<option value='" + Response.id + "'>" + Response.name + "</option>";
+                $("#categories").prepend($output);
+                $("#category-name").val('');
+            }
+
+        });
+    });
+});
 @endsection
