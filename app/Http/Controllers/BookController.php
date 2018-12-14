@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Book;
 use App\Category;
+use App\Events\BookCreated;
 use Illuminate\Http\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +58,8 @@ class BookController extends Controller
         $book = Auth::user()->books()->create($bookInputs);
         $book->categories()->attach($categories);
         $book->authors()->attach($authors);
+        $currentUser = Auth::user();
+        event(new BookCreated($currentUser,$book));
         return redirect('books');
     }
 

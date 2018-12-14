@@ -21,6 +21,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UserCreated' => [
             'App\Listeners\UserWelcomeEmail',
             'App\Listeners\UserWelcomeSms'
+        ],
+        'App\Events\BookCreated' => [
+            'App\Listeners\BookCreatedEmail',
+            'App\Listeners\BookCreatedSms'
         ]
     ];
 
