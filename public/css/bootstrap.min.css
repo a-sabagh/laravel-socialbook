@@ -2186,8 +2186,9 @@
   }
   .btn-info.disabled,.btn-info:disabled {
    color:#fff;
-   background-color:#17a2b8;
-   border-color:#17a2b8
+   background-color: #5aa5b1;
+   border-color: #5aa5b1;
+   cursor: not-allowed;
   }
   .btn-info:not(:disabled):not(.disabled).active,.btn-info:not(:disabled):not(.disabled):active,.show>.btn-info.dropdown-toggle {
    color:#fff;

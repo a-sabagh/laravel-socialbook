@@ -25,7 +25,11 @@
             <td>{{ $book->price }}</td>
             <td>{{ $book->published_at }}</td>
             <td>{{ $book->user->name }}</td>
+            @can('update', $book)
             <td><a href="{{ route('Book.edit',['id'=>$book->id]) }}" class="btn btn-info">{{__('general.edit')}}</a></td>
+            @else
+            <td><button type="button" disabled class="btn disabled btn-info edit" href="#">{{__('general.edit')}}</button></td>
+            @endcan
         </tr>
         @endforeach
     </tbody>

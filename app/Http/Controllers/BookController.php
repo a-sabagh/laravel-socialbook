@@ -64,6 +64,7 @@ class BookController extends Controller
     {
         $currentRoute = $this->currentRoute;
         $book = Book::findOrFail($id);
+        $this->authorize('update',$book);
         $categories = Category::all();
         $authors = Author::all();
         return view('books.edit', compact('currentRoute', 'book', 'categories', 'authors'));
@@ -82,6 +83,7 @@ class BookController extends Controller
         $categories = $request->input('categories');
         $authors = $request->input('authors');
         $book = Book::findOrFail($id);
+        $this->authorize('update',$book);
         $book->update($bookInputs);
         $book->categories()->sync($categories);
         $book->authors()->sync($authors);
