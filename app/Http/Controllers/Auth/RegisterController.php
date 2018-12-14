@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Events\UserCreated;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -54,6 +55,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string','regex:/^0[0-9]{10}$/', 'size:11', 'unique:users'],
+            'email' => ['required','string','email'],
             'national_id' => ['required','size:10','regex:/^[0-9]{10}$/'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
@@ -67,12 +69,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'phone' => $data['phone'],
+            'email' => $data['email'],
             'national_id' => $data['national_id'],
             'password' => Hash::make($data['password']),
         ]);
+        event(new UserCreated($user));
+        return $user;
     }
 
     public function showRegistrationForm()
