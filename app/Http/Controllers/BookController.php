@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Book;
 use App\Category;
-use App\Events\BookCreated;
+use App\Http\Logics\BookAction;
 use Illuminate\Http\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +43,7 @@ class BookController extends Controller
         return view('books.create', compact('currentRoute', 'categories', 'authors'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request,BookAction $action)
     {
         $request->validate([
             'name' => 'string|required|max:256',
@@ -52,14 +52,8 @@ class BookController extends Controller
             'price' => 'integer|required',
             'published_at' => 'date|required',
         ]);
-        $bookInputs = $request->only(['name', 'pages', 'isbn', 'price', 'published_at']);
-        $categories = $request->input('categories');
-        $authors = $request->input('authors');
-        $book = Auth::user()->books()->create($bookInputs);
-        $book->categories()->attach($categories);
-        $book->authors()->attach($authors);
-        $currentUser = Auth::user();
-        event(new BookCreated($currentUser,$book));
+        $user = Auth::user();
+        $action->store($user,$request->all());
         return redirect('books');
     }
 
@@ -73,7 +67,7 @@ class BookController extends Controller
         return view('books.edit', compact('currentRoute', 'book', 'categories', 'authors'));
     }
 
-    public function update(Request $request,int $id)
+    public function update(Request $request,int $id, BookAction $action)
     {
         $request->validate([
             'name' => 'string|required|max:256',
@@ -82,14 +76,10 @@ class BookController extends Controller
             'price' => 'integer|required',
             'published_at' => 'date|required',
         ]);
-        $bookInputs = $request->only(['name', 'pages', 'isbn', 'price', 'published_at']);
-        $categories = $request->input('categories');
-        $authors = $request->input('authors');
+
         $book = Book::findOrFail($id);
         $this->authorize('update',$book);
-        $book->update($bookInputs);
-        $book->categories()->sync($categories);
-        $book->authors()->sync($authors);
+        $action->update($book,$request->all());
         return redirect("books/{$id}");
     }
 }
