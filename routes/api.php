@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group([
 
-    'middleware' => 'api',
+    'middleware' => 'jwt.auth',
     'prefix' => 'auth'
 
 ], function ($router) {
@@ -28,6 +28,10 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
-
+    Route::post('books/create','BookController@store');
+    Route::put('books/{id}/update','BookController@update');
+    Route::delete('book/{id}/delete','BookController@delete');
 });
 
+Route::get('books','BookController@index');
+Route::get('books/{id}','BookController@show');
