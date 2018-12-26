@@ -71,17 +71,6 @@ class BookController extends Controller
             return response()->json(['message' => 'fail']);
         }
 
-        // if (Gate::allows('update-book', $user,$book)) {
-        //     return response()->json(['message' => 'Unauthorize'],403);
-        // } else {
-        //     $result = $action->update($book, $request->all());
-        //     if ($result) {
-        //         return response()->json(['message' => 'successfull'], 200);
-        //     } else {
-        //         return response()->json(['message' => 'fail']);
-        //     }
-        // }
-
     }
 
     /**
