@@ -82,6 +82,7 @@ class BookController extends Controller
     public function destroy(BookAction $action, int $id)
     {
         $book = Book::findOrFail($id);
+        $this->authorize('delete',$book);
         $result = $action->delete($book);
         if ($result) {
             return response()->json(['message' => 'successfull'], 200);

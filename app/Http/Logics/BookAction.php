@@ -40,4 +40,9 @@ class BookAction
         return ($result)? true : false;
     }
 
+    public function delete($book)
+    {
+        return $book->delete();
+    }
+
 }

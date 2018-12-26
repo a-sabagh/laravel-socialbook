@@ -29,8 +29,8 @@ Route::group([
 
 Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::post('books/create', 'BookController@store');
-    Route::put('books/{id}/update', 'BookController@update');
-    Route::delete('book/{id}/delete', 'BookController@delete');
+    Route::patch('books/{id}/update', 'BookController@update');
+    Route::delete('books/{id}/delete', 'BookController@destroy');
 });
 
 Route::get('books', 'BookController@index');
