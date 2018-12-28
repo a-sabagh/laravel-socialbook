@@ -8,6 +8,7 @@ use App\Http\Logics\BookAction;
 use App\Http\Requests\StoreBook;
 use App\Http\Requests\UpdateBook;
 use Illuminate\Http\Request;
+use App\Http\Resources\Book as BookResources;
 use Illuminate\Support\Facades\Gate;
 
 class BookController extends Controller
@@ -19,7 +20,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return Book::with('user')->get();
+        return BookResources::collection(Book::with(['user','categories','authors'])->get());
     }
 
     /**
@@ -48,7 +49,7 @@ class BookController extends Controller
      */
     public function show(int $id)
     {
-        return Book::findOrFail($id);
+        return new BookResources(Book::with(['user','categories','authors'])->findOrFail($id));
     }
 
     /**
